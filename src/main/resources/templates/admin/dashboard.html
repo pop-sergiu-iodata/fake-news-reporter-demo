@@ -40,7 +40,7 @@
                     <h3 th:text="${report.newsSource}"></h3>
                     <p class="url">
                         <strong>URL:</strong> 
-                        <a th:href="${report.url}" target="_blank" th:text="${report.url}"></a>
+                        <a th:href="${report.url}" target="_blank" rel="noopener noreferrer" th:text="${report.url}"></a>
                     </p>
                     <p class="description" th:text="${report.description}"></p>
                     <div class="admin-actions">
@@ -71,7 +71,7 @@
                     <h3 th:text="${report.newsSource}"></h3>
                     <p class="url">
                         <strong>URL:</strong> 
-                        <a th:href="${report.url}" target="_blank" th:text="${report.url}"></a>
+                        <a th:href="${report.url}" target="_blank" rel="noopener noreferrer" th:text="${report.url}"></a>
                     </p>
                     <p class="description" th:text="${report.description}"></p>
                     <div class="report-footer">
