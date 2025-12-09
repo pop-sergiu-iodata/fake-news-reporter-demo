@@ -23,17 +23,6 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      
-      - name: Install semantic-release
-        run: |
-          npm install -g semantic-release@23.0.0
-          npm install -g @semantic-release/git@10.0.1
-          npm install -g @semantic-release/changelog@6.0.3
-      
       - name: Determine version
         id: version
         run: |
@@ -52,16 +41,16 @@ jobs:
           
           # Determine version bump
           NEW_RELEASE="false"
-          if echo "$COMMITS" | grep -qE "^[a-f0-9]+ (feat!|BREAKING CHANGE)"; then
+          if echo "$COMMITS" | grep -qE "(feat!|BREAKING CHANGE)"; then
             MAJOR=$((MAJOR + 1))
             MINOR=0
             PATCH=0
             NEW_RELEASE="true"
-          elif echo "$COMMITS" | grep -qE "^[a-f0-9]+ feat(\(.+\))?:"; then
+          elif echo "$COMMITS" | grep -qE "feat(\(.+\))?:"; then
             MINOR=$((MINOR + 1))
             PATCH=0
             NEW_RELEASE="true"
-          elif echo "$COMMITS" | grep -qE "^[a-f0-9]+ (fix|perf|refactor)(\(.+\))?:"; then
+          elif echo "$COMMITS" | grep -qE "(fix|perf|refactor)(\(.+\))?:"; then
             PATCH=$((PATCH + 1))
             NEW_RELEASE="true"
           fi
