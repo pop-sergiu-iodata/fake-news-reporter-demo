@@ -38,11 +38,17 @@ jobs:
           fi
           echo "Commits since last tag:"
           echo "$COMMITS"
-          
-          # Parse version from tag
-          CURRENT_VERSION=${LATEST_TAG#v}
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
-          
+
+          # Parse version from tag, set default if no tag exists
+          if [ -n "$LATEST_TAG" ]; then
+            CURRENT_VERSION=${LATEST_TAG#v}
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+          else
+            MAJOR=0
+            MINOR=1
+            PATCH=0
+          fi
+
           # Determine version bump
           NEW_RELEASE="false"
           if echo "$COMMITS" | grep -qE "(feat!|BREAKING CHANGE)"; then
