@@ -23,10 +23,12 @@
             <nav>
                 <a th:href="@{/admin/dashboard}">Dashboard</a>
                 <a th:href="@{/}">Public View</a>
-                <span sec:authentication="name">User</span>
                 <form th:action="@{/logout}" method="post" style="display: inline;">
                     <button type="submit" class="btn-link">Logout</button>
                 </form>
+                <span style="color: white; margin-left: 10px;">
+                    <span sec:authentication="name">User</span>
+                </span>
             </nav>
         </div>
     </header>

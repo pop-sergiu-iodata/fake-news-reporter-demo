@@ -17,7 +17,7 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String role = "ADMIN";
+    private String role = "USER";
 
     @Column(nullable = false)
     private boolean enabled = true;

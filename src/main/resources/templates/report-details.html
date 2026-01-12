@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${report.newsSource} + ' - Report Details'">Report Details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .comments-section {
+            margin-top: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .comment-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 1rem;
+        }
+        
+        .comment-list {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .comment {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+        
+        .comment:last-child {
+            border-bottom: none;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .comment-date {
+            color: #7f8c8d;
+        }
+        
+        .comment-body {
+            line-height: 1.5;
+            color: #444;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .status-badge.approved {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-badge.rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-badge.pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 10px; color: #e74c3c;">
+                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                    <path d="M18 14h-8"></path>
+                    <path d="M15 18h-5"></path>
+                    <path d="M10 6h8v4h-8V6Z"></path>
+                    <line x1="3" y1="3" x2="21" y2="21" stroke="#e74c3c" stroke-width="2"></line>
+                </svg>
+                Fake News Reporter
+            </h1>
+            <nav>
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/reports}">View Reports</a>
+                <a th:href="@{/report}">Report Fake News</a>
+                
+                <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')">Admin Dashboard</a>
+                
+                <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+                <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a>
+                
+                <form th:action="@{/logout}" method="post" style="display:inline;" sec:authorize="isAuthenticated()">
+                     <button type="submit" class="btn-link">Logout</button>
+                </form>
+                <span sec:authorize="isAuthenticated()" style="color: white; margin-left: 10px;">
+                    <span sec:authentication="name">User</span>
+                </span>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+
+        <div class="report-card" style="margin-bottom: 2rem;">
+            <div class="report-header">
+                <span class="category-badge" th:text="${report.category}"></span>
+                <span class="date" th:text="${#temporals.format(report.reportedAt, 'MMM dd, yyyy HH:mm')}"></span>
+            </div>
+            
+            <div th:if="${report.approved}" class="status-badge approved">Verified Fake News</div>
+            <div th:if="${report.rejected}" class="status-badge rejected">Rejected Report</div>
+            <div th:if="${!report.approved && !report.rejected}" class="status-badge pending">Pending Review</div>
+
+            <h2 th:text="${report.newsSource}" style="margin-bottom: 1rem; color: #2c3e50;"></h2>
+            
+            <p class="url" style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                <strong>URL:</strong> 
+                <a th:href="${report.url}" target="_blank" rel="noopener noreferrer" th:text="${report.url}"></a>
+            </p>
+            
+            <div class="description" style="font-size: 1.1rem; line-height: 1.8;">
+                <p th:text="${report.description}"></p>
+            </div>
+        </div>
+
+        <section class="comments-section">
+            <h3>Comments (<span th:text="${comments.size()}">0</span>)</h3>
+            
+            <div sec:authorize="isAuthenticated()" style="margin-top: 1.5rem;">
+                <form th:action="@{/reports/{id}/comment(id=${report.id})}" method="post" class="comment-form">
+                    <textarea name="content" placeholder="Add a comment..." required></textarea>
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                </form>
+            </div>
+            
+            <div sec:authorize="!isAuthenticated()" style="margin-top: 1.5rem; padding: 1rem; background-color: #f8f9fa; border-radius: 4px; text-align: center;">
+                <p>Please <a th:href="@{/login}">login</a> to leave a comment.</p>
+            </div>
+
+            <div class="comment-list">
+                <div th:each="comment : ${comments}" class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author" th:text="${comment.author.username}">User</span>
+                        <span class="comment-date" th:text="${#temporals.format(comment.createdAt, 'MMM dd, yyyy HH:mm')}">Date</span>
+                    </div>
+                    <div class="comment-body" th:text="${comment.content}">
+                        Comment content...
+                    </div>
+                </div>
+                <div th:if="${comments.isEmpty()}" style="text-align: center; color: #7f8c8d; margin-top: 1rem;">
+                    No comments yet. Be the first to share your thoughts!
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fake News Reporter. Help fight misinformation.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Fake News</title>
+    <title>Register - Fake News Reporter</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -19,7 +19,7 @@
                 </svg>
                 Fake News Reporter
             </h1>
-            <nav xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+            <nav>
                 <a th:href="@{/}">Home</a>
                 <a th:href="@{/reports}">View Reports</a>
                 <a th:href="@{/report}">Report Fake News</a>
@@ -40,52 +40,34 @@
     </header>
 
     <main class="container">
-        <div class="form-container">
-            <h2>Report Fake News</h2>
-            <p class="subtitle">Help the community identify unreliable news sources</p>
-
-            <form th:action="@{/report}" th:object="${reportForm}" method="post">
+        <div class="login-container">
+            <h2>Create an Account</h2>
+            
+            <form th:action="@{/register}" th:object="${user}" method="post">
                 <div class="form-group">
-                    <label for="newsSource">News Source Name *</label>
-                    <input type="text" id="newsSource" th:field="*{newsSource}" 
-                           placeholder="e.g., Example News Network" required>
-                    <span class="error" th:if="${#fields.hasErrors('newsSource')}" 
-                          th:errors="*{newsSource}"></span>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" th:field="*{username}" required autofocus>
+                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-message" style="color: red;">Username Error</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="url">URL *</label>
-                    <input type="url" id="url" th:field="*{url}" 
-                           placeholder="https://example.com/fake-article" required>
-                    <span class="error" th:if="${#fields.hasErrors('url')}" 
-                          th:errors="*{url}"></span>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" th:field="*{password}" required>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message" style="color: red;">Password Error</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="category">Category *</label>
-                    <select id="category" th:field="*{category}" required>
-                        <option value="">Select a category</option>
-                        <option value="Politics">Politics</option>
-                        <option value="Health">Health</option>
-                        <option value="Science">Science</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Entertainment">Entertainment</option>
-                        <option value="Finance">Finance</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <span class="error" th:if="${#fields.hasErrors('category')}" 
-                          th:errors="*{category}"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="description">Description (Optional)</label>
-                    <textarea id="description" th:field="*{description}" rows="5" 
-                              placeholder="Provide additional details about why you believe this is fake news..."></textarea>
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" th:field="*{confirmPassword}">
+                    <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="error-message" style="color: red;">Password Error</span>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Submit Report</button>
-                    <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <a th:href="@{/login}" class="btn btn-secondary">Cancel</a>
+                </div>
+                <div style="margin-top: 1rem; text-align: center;">
+                    <a th:href="@{/login}">Already have an account? Login here.</a>
                 </div>
             </form>
         </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - Fake News Reporter</title>
+    <title>Login - Fake News Reporter</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -23,13 +23,25 @@
                 <a th:href="@{/}">Home</a>
                 <a th:href="@{/reports}">View Reports</a>
                 <a th:href="@{/report}">Report Fake News</a>
+                
+                <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')">Admin Dashboard</a>
+                
+                <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+                <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a>
+                
+                <form th:action="@{/logout}" method="post" style="display:inline;" sec:authorize="isAuthenticated()">
+                     <button type="submit" class="btn-link">Logout</button>
+                </form>
+                <span sec:authorize="isAuthenticated()" style="color: white; margin-left: 10px;">
+                    <span sec:authentication="name">User</span>
+                </span>
             </nav>
         </div>
     </header>
 
     <main class="container">
         <div class="login-container">
-            <h2>Admin Login</h2>
+            <h2>Login</h2>
             
             <div th:if="${param.error}" class="alert alert-error">
                 Invalid username or password.
@@ -53,6 +65,9 @@
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Login</button>
                     <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
+                </div>
+                <div style="margin-top: 1rem; text-align: center;">
+                    <a th:href="@{/register}">Don't have an account? Register here.</a>
                 </div>
             </form>
         </div>
