@@ -45,8 +45,29 @@ public class FakeNewsReport {
     @Column
     private LocalDateTime rejectedAt;
 
+    @OneToMany(mappedBy = "report", cascade = CascadeType.ALL, orphanRemoval = true)
+    private java.util.List<Comment> comments = new java.util.ArrayList<>();
+
     public FakeNewsReport() {
         this.reportedAt = LocalDateTime.now();
+    }
+
+    public java.util.List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(java.util.List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+        comment.setReport(this);
+    }
+
+    public void removeComment(Comment comment) {
+        comments.remove(comment);
+        comment.setReport(null);
     }
 
     public Long getId() {

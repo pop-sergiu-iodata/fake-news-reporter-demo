@@ -19,11 +19,22 @@
                 </svg>
                 Fake News Reporter
             </h1>
-            <nav>
+            <nav xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                 <a th:href="@{/}">Home</a>
                 <a th:href="@{/reports}">View Reports</a>
                 <a th:href="@{/report}">Report Fake News</a>
-                <a th:href="@{/login}">Admin Login</a>
+                
+                <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')">Admin Dashboard</a>
+                
+                <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+                <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a>
+                
+                <form th:action="@{/logout}" method="post" style="display:inline;" sec:authorize="isAuthenticated()">
+                     <button type="submit" class="btn-link">Logout</button>
+                </form>
+                <span sec:authorize="isAuthenticated()" style="color: white; margin-left: 10px;">
+                    <span sec:authentication="name">User</span>
+                </span>
             </nav>
         </div>
     </header>
@@ -55,6 +66,7 @@
                     <div class="report-footer">
                         <span th:if="${report.approved}" class="verified">✓ Verified</span>
                         <span th:if="${report.rejected}" class="rejected">✗ Rejected</span>
+                        <a th:href="@{/reports/{id}(id=${report.id})}" class="btn btn-secondary btn-sm" style="float: right;">View Details & Comments</a>
                     </div>
                 </div>
             </div>
