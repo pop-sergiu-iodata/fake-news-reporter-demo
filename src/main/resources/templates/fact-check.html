@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Fake News Reporter</title>
+    <title>AI Fact Check</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -42,36 +42,42 @@
     </header>
 
     <main class="container">
-        <div class="login-container">
-            <h2>Login</h2>
-            
-            <div th:if="${param.error}" class="alert alert-error">
-                Invalid username or password.
-            </div>
-            
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out successfully.
-            </div>
+        <div class="form-container">
+            <h2>AI Fact Check (Powered by Gemini)</h2>
+            <p class="subtitle">Quickly verify a piece of text to see if it is true, false, or inconclusive.</p>
 
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/fact-check}" method="post">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required autofocus>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="text">Text to check *</label>
+                    <textarea id="text" name="text" rows="5" 
+                              placeholder="Paste the news text or claim here..." required th:text="${text}"></textarea>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
-                </div>
-                <div style="margin-top: 1rem; text-align: center;">
-                    <a th:href="@{/register}">Don't have an account? Register here.</a>
+                    <button type="submit" class="btn btn-primary">Check Now</button>
                 </div>
             </form>
+
+            <div th:if="${result != null}" class="alert" 
+                 th:classappend="${result == 'TRUE'} ? 'alert-success' : (${result == 'FALSE'} ? 'alert-danger' : 'alert-warning')" 
+                 style="margin-top: 20px;">
+                <h3 style="margin-top: 0;">Result: <span th:text="${result}"></span></h3>
+                <div th:if="${result == 'TRUE'}">
+                    <p>The AI analysis indicates this claim is likely <strong>TRUE</strong>.</p>
+                </div>
+                <div th:if="${result == 'FALSE'}">
+                    <p>The AI analysis indicates this claim is likely <strong>FALSE</strong>.</p>
+                </div>
+                <div th:if="${result == 'INCONCLUSIVE'}">
+                    <p>The AI could not conclusively determine if this claim is true or false.</p>
+                </div>
+                <div th:if="${result == 'RATE_LIMIT_EXCEEDED'}">
+                    <p>The AI API rate limit has been exceeded. Please try again later.</p>
+                </div>
+                <div th:if="${result == 'ERROR' || result == 'NO_RESPONSE'}">
+                    <p>An error occurred while communicating with the AI. Please try again.</p>
+                </div>
+            </div>
         </div>
     </main>
 

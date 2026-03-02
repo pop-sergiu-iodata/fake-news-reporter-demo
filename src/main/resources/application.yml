@@ -16,6 +16,16 @@ spring:
   thymeleaf:
     cache: false
     
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: 5672
+    username: user
+    password: password
+
+gemini:
+  api:
+    key: ${GOOGLE_API_KEY:}
+    
 server:
   port: 8080
 

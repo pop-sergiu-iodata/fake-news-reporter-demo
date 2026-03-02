@@ -162,6 +162,18 @@ main {
     color: #155724;
 }
 
+.alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+}
+
 .alert-error {
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
@@ -249,6 +261,12 @@ main {
 
 .rejected {
     color: #e74c3c;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.warning {
+    color: #f39c12;
     font-weight: bold;
     font-size: 0.9rem;
 }

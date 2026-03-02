@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Fake News Reporter</title>
+    <title>AI Fact Check History</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -24,7 +24,6 @@
                 <a th:href="@{/reports}">View Reports</a>
                 <a th:href="@{/report}">Report Fake News</a>
                 <a th:href="@{/fact-check}">AI Fact Check</a>
-                <a th:href="@{/fact-check/history}" sec:authorize="isAuthenticated()">My AI History</a>
                 
                 <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')">Admin Dashboard</a>
                 
@@ -42,36 +41,27 @@
     </header>
 
     <main class="container">
-        <div class="login-container">
-            <h2>Login</h2>
-            
-            <div th:if="${param.error}" class="alert alert-error">
-                Invalid username or password.
+        <h2>Your AI Fact Check History</h2>
+        
+        <div th:if="${history.isEmpty()}" class="no-reports">
+            <p>You haven't performed any AI fact checks yet.</p>
+            <a th:href="@{/fact-check}" class="btn btn-primary">Try AI Fact Check</a>
+        </div>
+        
+        <div class="reports-grid" th:if="${!history.isEmpty()}">
+            <div class="report-card" th:each="entry : ${history}">
+                <div class="report-header">
+                    <span class="category-badge" th:text="${entry.result}" 
+                          th:style="'background-color: ' + (${entry.result.name() == 'TRUE'} ? '#27ae60' : (${entry.result.name() == 'FALSE'} ? '#e74c3c' : '#f39c12'))"></span>
+                    <span class="date" th:text="${#temporals.format(entry.timestamp, 'MMM dd, yyyy HH:mm')}"></span>
+                </div>
+                <p class="description" th:text="${entry.text}"></p>
+                <div class="report-footer">
+                    <span th:if="${entry.result.name() == 'TRUE'}" class="verified">✓ Verified True</span>
+                    <span th:if="${entry.result.name() == 'FALSE'}" class="rejected">✗ Verified False</span>
+                    <span th:if="${entry.result.name() == 'INCONCLUSIVE'}" class="warning">? Inconclusive</span>
+                </div>
             </div>
-            
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out successfully.
-            </div>
-
-            <form th:action="@{/login}" method="post">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required autofocus>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
-                </div>
-                <div style="margin-top: 1rem; text-align: center;">
-                    <a th:href="@{/register}">Don't have an account? Register here.</a>
-                </div>
-            </form>
         </div>
     </main>
 
