@@ -19,19 +19,12 @@
                 </svg>
                 Fake News Reporter
             </h1>
-<<<<<<< HEAD
             <nav xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                 <a th:href="@{/}">Home</a>
                 <a th:href="@{/reports}">View Reports</a>
                 <a th:href="@{/report}">Report Fake News</a>
                 <a th:href="@{/fact-check}">AI Fact Check</a>
                 <a th:href="@{/fact-check/history}" sec:authorize="isAuthenticated()">My AI History</a>
-=======
-            <nav>
-                <a th:href="@{/}">Home</a>
-                <a th:href="@{/reports}">View Reports</a>
-                <a th:href="@{/report}">Report Fake News</a>
->>>>>>> 03941dc269d9871dc8fa9723294ffceabfb34f91
                 
                 <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')">Admin Dashboard</a>
                 
