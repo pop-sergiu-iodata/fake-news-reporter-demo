@@ -75,6 +75,7 @@
             <optional>true</optional>
         </dependency>
         
+<<<<<<< HEAD
         <!-- RabbitMQ & Gemini -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -93,6 +94,8 @@
             <version>1.0.0</version>
         </dependency>
 
+=======
+>>>>>>> 03941dc269d9871dc8fa9723294ffceabfb34f91
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -112,6 +115,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+<<<<<<< HEAD
                 <configuration>
                     <excludes>
                         <exclude>
@@ -120,6 +124,8 @@
                         </exclude>
                     </excludes>
                 </configuration>
+=======
+>>>>>>> 03941dc269d9871dc8fa9723294ffceabfb34f91
             </plugin>
         </plugins>
     </build>

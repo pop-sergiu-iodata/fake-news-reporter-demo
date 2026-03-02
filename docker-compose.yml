@@ -20,6 +20,7 @@ services:
       timeout: 5s
       retries: 5
 
+<<<<<<< HEAD
   rabbitmq:
     image: rabbitmq:3-management
     container_name: fakenews-rabbitmq
@@ -37,6 +38,8 @@ services:
       timeout: 5s
       retries: 5
 
+=======
+>>>>>>> 03941dc269d9871dc8fa9723294ffceabfb34f91
   app:
     build:
       context: .
@@ -49,15 +52,21 @@ services:
       DB_NAME: fakenews
       DB_USER: postgres
       DB_PASSWORD: postgres
+<<<<<<< HEAD
       RABBITMQ_HOST: rabbitmq
       GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+=======
+>>>>>>> 03941dc269d9871dc8fa9723294ffceabfb34f91
     ports:
       - "8080:8080"
     depends_on:
       postgres:
         condition: service_healthy
+<<<<<<< HEAD
       rabbitmq:
         condition: service_healthy
+=======
+>>>>>>> 03941dc269d9871dc8fa9723294ffceabfb34f91
     networks:
       - fakenews-network
 
