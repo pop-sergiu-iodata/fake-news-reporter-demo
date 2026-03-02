@@ -13,6 +13,8 @@ A Spring Boot application for reporting and managing fake news sources. Users ca
 
 ## Features
 
+  - NO API KEY YET
+
 - **Public Features:**
   - View verified fake news reports
   - Report new fake news sources
