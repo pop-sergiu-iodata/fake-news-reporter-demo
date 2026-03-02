@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Reports - Fake News Reporter</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 10px; color: #e74c3c;">
+                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                    <path d="M18 14h-8"></path>
+                    <path d="M15 18h-5"></path>
+                    <path d="M10 6h8v4h-8V6Z"></path>
+                    <line x1="3" y1="3" x2="21" y2="21" stroke="#e74c3c" stroke-width="2"></line>
+                </svg>
+                Fake News Reporter
+            </h1>
+            <nav xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/reports}">View Reports</a>
+                <a th:href="@{/report}">Report Fake News</a>
+                
+                <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')">Admin Dashboard</a>
+                
+                <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+                <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a>
+                
+                <form th:action="@{/logout}" method="post" style="display:inline;" sec:authorize="isAuthenticated()">
+                     <button type="submit" class="btn-link">Logout</button>
+                </form>
+                <span sec:authorize="isAuthenticated()" style="color: white; margin-left: 10px;">
+                    <span sec:authentication="name">User</span>
+                </span>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Fake News Reports</h2>
+        
+        <div th:if="${reports.isEmpty()}" class="no-reports">
+            <p>No reports yet.</p>
+        </div>
+        
+        <div class="reports-list" th:if="${!reports.isEmpty()}">
+            <div class="report-card" th:each="report : ${reports}">
+                <div class="report-header">
+                    <span class="category-badge" th:text="${report.category}"></span>
+                    <span class="date" th:text="${#temporals.format(report.approved ? report.approvedAt : report.rejectedAt, 'MMM dd, yyyy')}"></span>
+                </div>
+                <h3 th:text="${report.newsSource}"></h3>
+                <p class="url">
+                    <strong>URL:</strong> 
+                    <a th:href="${report.url}" target="_blank" rel="noopener noreferrer" th:text="${report.url}"></a>
+                </p>
+                <p class="description" th:text="${report.description}"></p>
+                <div class="report-footer">
+                    <span th:if="${report.approved}" class="verified">✓ Verified by Admin</span>
+                    <span th:if="${report.rejected}" class="rejected">✗ Rejected by Admin</span>
+                    <a th:href="@{/reports/{id}(id=${report.id})}" class="btn btn-secondary btn-sm" style="float: right;">View Details & Comments</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fake News Reporter. Help fight misinformation.</p>
+        </div>
+    </footer>
+</body>
+</html>
