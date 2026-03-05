@@ -1,7 +1,6 @@
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: fakenews-postgres
     environment:
       POSTGRES_DB: fakenews
       POSTGRES_USER: postgres
@@ -20,7 +19,6 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
-    container_name: fakenews-rabbitmq
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -39,7 +37,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: fakenews-app
     environment:
       SPRING_PROFILE: prod
       DB_HOST: postgres
@@ -48,7 +45,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       RABBITMQ_HOST: rabbitmq
-      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      GOOGLE_API_KEY2: need_api_key
     ports:
       - "8080:8080"
     depends_on:

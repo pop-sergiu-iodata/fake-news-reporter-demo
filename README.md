@@ -14,6 +14,7 @@ A Spring Boot application for reporting and managing fake news sources. Users ca
 ## Features
 
   - NO API KEY YET
+  - line 48 in docker-compose file, this line needs to be modified
 
 - **Public Features:**
   - View verified fake news reports
