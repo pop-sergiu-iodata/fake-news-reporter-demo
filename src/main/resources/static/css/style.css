@@ -246,6 +246,7 @@ main {
 .description {
     color: #555;
     margin-bottom: 1rem;
+    white-space: pre-wrap;
 }
 
 .report-footer {
