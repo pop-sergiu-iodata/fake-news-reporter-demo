@@ -6,6 +6,8 @@ import com.automatica.fakenews.model.GeminiResponse;
 import com.automatica.fakenews.model.User;
 import com.automatica.fakenews.repository.FactCheckHistoryRepository;
 import com.automatica.fakenews.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ import java.util.Optional;
 
 @Controller
 public class FactCheckController {
+
+    private static final Logger log = LoggerFactory.getLogger(FactCheckController.class);
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -38,12 +42,12 @@ public class FactCheckController {
 
     @PostMapping("/fact-check")
     public String performFactCheck(@RequestParam("text") String text, Model model, Principal principal) {
-        System.out.println("Sending fact-check request to RabbitMQ: " + text);
+        log.info("Sending fact-check request to RabbitMQ: {}", text);
         // Send to queue and wait for the synchronous reply
         Object response = rabbitTemplate.convertSendAndReceive(RabbitMQConfig.QUEUE_NAME, text);
         
         String result = (response != null) ? response.toString() : "NO_RESPONSE";
-        System.out.println("Received fact-check response from RabbitMQ: " + result);
+        log.info("Received fact-check response from RabbitMQ: {}", result);
         
         // Save to history if logged in and result is a valid GeminiResponse
         if (principal != null) {

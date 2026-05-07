@@ -37,7 +37,34 @@
 
     <main class="container">
         <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+        <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
         
+        <div class="admin-controls" style="margin-bottom: 30px; text-align: right;">
+            <form th:action="@{/admin/analyze-news}" method="post">
+                <button type="submit" class="btn btn-primary" style="background-color: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                    </svg>
+                    Analyze Top News with AI
+                </button>
+            </form>
+        </div>
+
+        <section class="admin-section newly-analyzed" th:if="${newlyAnalyzed}">
+            <h2 style="color: #2980b9;">Newly Analyzed News</h2>
+            <div class="admin-reports-list">
+                <div class="admin-report-card" th:each="report : ${newlyAnalyzed}" style="border-left: 5px solid #2980b9;">
+                    <div class="report-header">
+                        <span class="category-badge" style="background-color: #2980b9;">AI ANALYSIS</span>
+                        <span class="date" th:text="${#temporals.format(report.reportedAt, 'MMM dd, yyyy HH:mm')}"></span>
+                    </div>
+                    <h3 th:text="${report.newsSource}"></h3>
+                    <p class="description" th:text="${report.description}" style="white-space: pre-wrap;"></p>
+                </div>
+            </div>
+            <hr style="margin: 40px 0; border: 0; border-top: 2px dashed #bdc3c7;">
+        </section>
+
         <section class="admin-section">
             <h2>Pending Reports</h2>
             <div th:if="${pendingReports.isEmpty()}" class="no-reports">
