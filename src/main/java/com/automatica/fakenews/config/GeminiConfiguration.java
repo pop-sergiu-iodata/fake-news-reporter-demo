@@ -8,8 +8,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GeminiConfiguration {
 
+    @Value("${gemini.api.key}")
+    private String apiKey;
+
     @Bean
     public Client geminiClient() {
-        return new Client();
+        return Client.builder()
+                .apiKey(apiKey)
+                .build();
     }
 }
