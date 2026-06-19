@@ -193,3 +193,89 @@ This project is for demonstration purposes.
 ## Contributing
 
 Feel free to submit issues and pull requests.
+
+## NEW
+## Running the Application with AI Agents
+
+This project can also be run with the AI agent functionality enabled. The main application is implemented in Java with Spring Boot, while the AI agent logic is connected to the application and used when the AI-related features are triggered.
+
+Before running the application, make sure the required environment variables are configured. The AI functionality requires three API keys:
+
+* `GEMINI_API_KEY`
+* `GEMINI_API_KEY_AGENT`
+* `NEWS_API_KEY_AGENT`
+
+These variables should be added as user environment variables on Windows. After adding or changing them, restart the terminal and the IDE so the application can read the new values.
+
+### Running Locally with Maven
+
+Before starting the application locally, make sure nothing else is already using port `8080`. If a previous local run or Docker container is still active, stop it first.
+
+From the project root, build the application:
+
+```bash
+mvn clean package
+```
+
+Then run the Spring Boot application:
+
+```bash
+mvn spring-boot:run
+```
+
+After the application starts, open:
+
+```text
+http://localhost:8080
+```
+
+The Java web application will run normally, and the AI agent functionality will be available through the implemented application flow.
+
+### Running with Docker Compose
+
+Before running the Docker version, stop any local process already using port `8080`, including a previous `mvn spring-boot:run` execution.
+
+Then build and start the Docker containers:
+
+```bash
+docker-compose up --build
+```
+
+After the containers start, open:
+
+```text
+http://localhost:8080
+```
+
+To stop the Docker containers, run:
+
+```bash
+docker-compose down
+```
+
+To stop the containers and remove the stored volumes, run:
+
+```bash
+docker-compose down -v
+```
+
+### Full Recommended Run Flow
+
+A typical full run from beginning to end is:
+
+1. Configure the environment variables for Gemini and NewsAPI.
+2. Restart the terminal or IDE.
+3. Stop anything already using port `8080`.
+4. Build the project with `mvn clean package`.
+5. Run locally with `mvn spring-boot:run`, or run with Docker using `docker-compose up --build`.
+6. Open the application at `http://localhost:8080`.
+7. Use the AI agent feature from the web application.
+8. Stop the running application when finished.
+
+### Notes
+
+The local Spring Boot run and the Docker run both use port `8080`, so they should not be active at the same time.
+
+If the application does not detect the AI keys, restart the terminal and IDE after setting the environment variables.
+
+The AI agent functionality depends on the configured API keys and on the agent implementation being available inside the project.

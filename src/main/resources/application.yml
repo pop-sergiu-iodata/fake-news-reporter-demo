@@ -33,3 +33,11 @@ logging:
   level:
     com.automatica: INFO
     org.springframework.security: INFO
+
+python:
+  path: ${PYTHON_PATH:ai_agent/.venv/Scripts/python.exe}
+  script: ${PYTHON_SCRIPT:ai_agent/TestAgain.py}
+
+local:
+  ai:
+    script: ${LOCAL_AI_SCRIPT:local_ai_agent/LocalAIAgent.py}

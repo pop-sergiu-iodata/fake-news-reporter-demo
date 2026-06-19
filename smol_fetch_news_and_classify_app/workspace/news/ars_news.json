@@ -1,0 +1,97 @@
+[
+  {
+    "rank": 1,
+    "source": "ars",
+    "title": "Used Waymo robotaxi batteries become backup storage for power grids",
+    "url": "https://arstechnica.com/science/2026/06/used-waymo-robotaxi-batteries-become-backup-storage-for-power-grids/",
+    "description": "Used Waymo batteries will bolster California and Texas energy storage projects.",
+    "published": "Thu, 04 Jun 2026 11:00:45 +0000",
+    "article_text": "Thousands of electric vehicles in Waymo’s autonomous robotaxi fleet may eventually give up their used batteries for a very different purpose—contributing up to hundreds of megawatt-hours of stationary energy storage to local power grids.\nThat prospect comes from a “strategic supply agreement” announced by Waymo and B2U Storage Solutions on June 4. B2U has been repurposing thousands of used batteries from various electric vehicles by installing them in large stationary energy storage projects. Such energy storage facilities can capture excess renewable energy during low demand periods and release such energy when local power grids are experiencing peak demand periods.\n“Our business is getting the full residual value out of electric vehicle batteries after they’re no longer suitable for automotive use,” Freeman Hall, CEO of B2U Storage Solution, told Ars. “Waymo puts a lot of miles on EVs and their model is expanding rapidly, and so we’re just very pleased and honored to be able to work with them.”\nThe agreement would allow B2U to repurpose Waymo batteries that become available at the end of a vehicle’s lifespan, along with obtaining used batteries that are being swapped out from operational vehicles. Waymo’s “proactive maintenance” for its autonomous vehicles includes identifying opportunities to “refresh the battery to improve efficiency overall for our fleet,” Adam Lenz, head of sustainability and environment at Waymo, told Ars. “That’s when we look to these second-life applications, because there’s still a lot of life left in the battery,” he said.\nWaymo did not specify the average mileage at which it swaps out batteries or retires vehicles from service. But Waymo robotaxis drive around much more each day than the typical EV, which means the Waymo fleet is likely to experience faster usage-related degradation of battery capacity over time. The company confirmed to Ars that “some of these vehicles have now been serving riders for years and have mileage beyond what a normal consumer drives.”",
+    "image_urls": [
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/Rachel-Harper-inspecting-B24-at-Lancaster-1152x648.jpg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/Rachel-Harper-inspecting-B24-at-Lancaster-640x360.jpg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/04/linkedin-profile-picture-headshot-JPG.jpg",
+      "https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/images/firework-loader.75ab30.gif",
+      "https://cdn.arstechnica.net/wp-content/uploads/2025/05/amos-6-500x500.jpg"
+    ],
+    "local_image_path": "images\\ars\\1_used_waymo_robotaxi_batteries_become_backup_storage_for_power_grids.jpg",
+    "downloaded_image_url": "https://cdn.arstechnica.net/wp-content/uploads/2026/06/Rachel-Harper-inspecting-B24-at-Lancaster-1152x648.jpg",
+    "category": "Other"
+  },
+  {
+    "rank": 2,
+    "source": "ars",
+    "title": "Flesh-eating screwworm infection confirmed in South Texas, USDA says",
+    "url": "https://arstechnica.com/health/2026/06/flesh-eating-screwworm-infection-detected-in-south-texas-usda-says/",
+    "description": "With the case confirmed, it is the fly's first breach of the US-Mexico border.",
+    "published": "Thu, 04 Jun 2026 02:46:35 +0000",
+    "article_text": "A case of New World screwworm has been confirmed in South Texas, the US Department of Agriculture announced Wednesday night. It marks the first detected breach of the US-Mexico border by the ravenous flesh-eating flies, which have been making their way up through Central America for the past several years.\nIn a social media post on Wednesday afternoon, the USDA revealed that a sample from Texas had been sent to the National Veterinary Services Laboratories (NVSL) in Ames, Iowa, for confirmatory testing of a screwworm infection. Agriculture Secretary Brooke Rollins later posted that the testing had confirmed the infection, which was found in a 3-week-old calf in Zavala County, Texas.\nChatter of a screwworm detection had already been building this week, rattling the US cattle industry.\nAlthough many animals, including humans, can be victims of the parasite, the screwworm is especially dangerous to livestock. Female screwworms lay hundreds of eggs in the wounds and openings of warm-blooded creatures, allowing their larvae to feast on the living animals, causing deep, festering, life-threatening wounds. Although the screwworm was once endemic to the US, it was eradicated amid a yearslong control effort in the 1960s. The USDA estimates that keeping screwworms out of the US has saved the livestock industry $900 million each year.\nBut the fly has broken through control efforts in Central America and has been inching closer. On May 28, a case was found 25 miles from the border in a 5-year-old goat in Coahuila, Mexico, according to the USDA. The case was one of many detected in recent days, including a case in a calf just 39 miles from the border, also in Coahuila.",
+    "image_urls": [
+      "https://cdn.arstechnica.net/wp-content/uploads/2016/11/CSIRO_ScienceImage_115_The_Tip_of_a_Screw_Worm_Fly_Larvae.jpg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2016/11/CSIRO_ScienceImage_115_The_Tip_of_a_Screw_Worm_Fly_Larvae-300x199.jpg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2016/05/b.mole-45957.jpg",
+      "https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/images/firework-loader.75ab30.gif",
+      "https://cdn.arstechnica.net/wp-content/uploads/2025/05/amos-6-500x500.jpg"
+    ],
+    "local_image_path": "images\\ars\\2_flesh_eating_screwworm_infection_confirmed_in_south_texas_usda_says.jpg",
+    "downloaded_image_url": "https://cdn.arstechnica.net/wp-content/uploads/2016/11/CSIRO_ScienceImage_115_The_Tip_of_a_Screw_Worm_Fly_Larvae.jpg",
+    "category": "Other"
+  },
+  {
+    "rank": 3,
+    "source": "ars",
+    "title": "Microsoft, Atom Computing, EeroQ update their quantum computing progress",
+    "url": "https://arstechnica.com/science/2026/06/microsoft-atom-computing-eeroq-update-their-quantum-computing-progress/",
+    "description": "Some quantum computing companies we've covered have done recent progress updates.",
+    "published": "Wed, 03 Jun 2026 22:09:41 +0000",
+    "article_text": "With dozens of companies, from small startups to tech giants, pursuing quantum computing, there’s a steady flow of results as they try to find a path to utility. We typically focus on new technologies and major landmarks, which can obscure the fact that any big success will inevitably have been built on a lot of incremental progress.\nThe past few weeks have seen a number of companies release progress reports on how they’re trying to get the technologies closer to general use. None of these represents a major breakthrough, but all are absolutely necessary for the technology to advance. The idea here is to convey the hard work required to move us closer to something useful.\nMicrosoft does material science\nMicrosoft is one of the few companies working on topological qubits, based on the distinct physics that occurs when particles are confined. Microsoft’s system relies on a thin superconducting wire placed on top of a semiconductor. In superconductors, groups of two electrons form Cooper pairs. But if the wire contains an odd number of conducting electrons—meaning there’s a single unpaired electron—it will end up delocalized to both ends of the wire. (Because quantum mechanics is weird.)\nThat’s the behavior that theorists had described, at least. Before the company could build qubits based on the behavior, it had to confirm that the behavior actually occurred as theorists predicted. It was not smooth sailing. Some of the early work in the area was later retracted, and Microsoft’s attempts to show the physics were solid were met with some skepticism, as the system it was showing off was very noisy. Despite that, the company laid out a roadmap based on building qubits out of pairs of these nanowires.",
+    "image_urls": [
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/image-1152x648.jpeg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/image-640x360.jpeg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/02/john-timmer-300x300.jpg",
+      "https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/images/firework-loader.75ab30.gif",
+      "https://cdn.arstechnica.net/wp-content/uploads/2025/05/amos-6-500x500.jpg"
+    ],
+    "local_image_path": "images\\ars\\3_microsoft_atom_computing_eeroq_update_their_quantum_computing_progress.jpeg",
+    "downloaded_image_url": "https://cdn.arstechnica.net/wp-content/uploads/2026/06/image-1152x648.jpeg",
+    "category": "Technology"
+  },
+  {
+    "rank": 4,
+    "source": "ars",
+    "title": "Google ordered to put clearer links in AI search and let UK publishers opt out",
+    "url": "https://arstechnica.com/tech-policy/2026/06/google-ordered-to-put-clearer-links-in-ai-search-and-let-uk-publishers-opt-out/",
+    "description": "Google must change AI Overviews after claiming users don't want \"lots of sources.\"",
+    "published": "Wed, 03 Jun 2026 20:26:51 +0000",
+    "article_text": "UK regulators today ordered Google to put clearer attributions and links to publishers’ content in its AI-generated search features. The UK’s Competition and Markets Authority (CMA) also said Google must give publishers a way to opt out of AI features in search.\n“In a world first, publishers will now have effective tools to prevent their content being used to power AI features in search, such as AI Overviews,” the CMA said today. “This will put publishers, like news organizations, in a stronger position to negotiate content deals with Google. To boost consumer trust, Google is also now required to make sure that publisher content is properly attributed, using clear links, in AI‑generated search results.”\nThe CMA ruled that Google may not penalize publishers for opting out of AI, meaning that Google can’t downrank opted-out publishers in general search results. The CMA said Google will have nine months to comply with all requirements but that the agency “expects important parts of the controls to become available to publishers well before that deadline. Google will also be required to submit and publish compliance reports, supported by key data and metrics, explaining changes it has made and how it has complied.”\nGoogle’s AI Overviews tend to give confident-sounding responses to search queries, but the links to sources in the AI Overviews may or may not support those confident responses. Clearer attribution and links could make it easier for searchers to determine the accuracy of AI Overview summaries.\nThe CMA applied the rules to Google after determining that it has “strategic market status” in general search services, and has ongoing investigations into Apple and Microsoft. Google today said it will comply with the CMA decision.",
+    "image_urls": [
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/google-sign-logo-1152x648.jpg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/google-sign-logo-640x426.jpg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2016/05/j.brodkin-11_2.jpg",
+      "https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/images/firework-loader.75ab30.gif",
+      "https://cdn.arstechnica.net/wp-content/uploads/2025/05/amos-6-500x500.jpg"
+    ],
+    "local_image_path": "images\\ars\\4_google_ordered_to_put_clearer_links_in_ai_search_and_let_uk_publishers_opt_out.jpg",
+    "downloaded_image_url": "https://cdn.arstechnica.net/wp-content/uploads/2026/06/google-sign-logo-1152x648.jpg",
+    "category": "Other"
+  },
+  {
+    "rank": 5,
+    "source": "ars",
+    "title": "Can't make sense of Dashlane's vault theft notification? You're not alone.",
+    "url": "https://arstechnica.com/security/2026/06/dashlane-issues-opaque-advisory-warning-20-encrypted-vaults-were-stolen/",
+    "description": "Security advisory leaves out key details. Dashlane maintains complete silence.",
+    "published": "Wed, 03 Jun 2026 19:53:14 +0000",
+    "article_text": "There’s a lot that doesn’t add up in a security advisory password manager Dashlane published Monday, warning that attackers managed to obtain 20 encrypted user vaults.\n“Starting on Sunday, May 31, 2026, an external party launched a brute force attack against certain Dashlane user accounts,” the company said. “The goal of the attack was to brute-force two-factor authentication (2FA) protections to allow the attacker to register new devices on existing user accounts.”\nHello, Dashlane, anybody home?\nA Dashlane user who received such a 2FA request provided this screenshot of the notification, which arrived on Sunday.\nThe UK-based user was concerned and contacted Dashlane through a support bot. Ultimately the user got no information about why the notification was sent.\n“Then [I] discovered this news from Mastodon infosec and not Dashlane themselves,” the user told me. “Currently trying to find out what has happened! Because how can you trigger a 2fa request if you haven’t got the password 1st? As a paying customer I think I should have known about this from Dashlane and not Mastodon infosec folks.”\nScores of social media discussions are filled with similar comments from users who also don’t understand the basic mechanics of this attack. Typically, 2FA protections take the form of a one-time password generated by an authentication app or sent by text or email. They’re typically six digits long and change every 45 or so seconds, although as the notification above indicates, the code remained valid for three hours.\nBrute-forcing is a trial-and-error method that rapidly submits every possible combination until landing on the right one. Under these assumptions, there would be 1 million possible passcodes. A successful breach would require a statistically significant percentage of them to be entered within the three-hour window.\nWhile the resources needed to bombard Dashlane servers with that volume of guesses in such a short period of time are possible, they’re not commonly found in usual brute-force attacks. Dashlane doesn’t explicitly say it placed a rate limit on the number of submissions a user can make, although it appears likely based on language in the advisory saying “Because of the high volume of attempts on user accounts, Dashlane’s security controls automatically locked accounts that were targeted by the attack.” Even assuming there was no rate limiting, it’s hard to imagine Dashlane servers not at least temporarily choking when receiving 150,000 or more ",
+    "image_urls": [
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/dashlane-app-1152x648-1780514208.webp",
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/dashlane-app-640x640.webp",
+      "https://cdn.arstechnica.net/wp-content/uploads/2026/06/dashlane-notification-640x1168.jpg",
+      "https://cdn.arstechnica.net/wp-content/uploads/2018/10/Dang.jpg",
+      "https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/images/firework-loader.75ab30.gif"
+    ],
+    "local_image_path": "images\\ars\\5_can_t_make_sense_of_dashlane_s_vault_theft_notification_you_re_not_alone.webp",
+    "downloaded_image_url": "https://cdn.arstechnica.net/wp-content/uploads/2026/06/dashlane-app-1152x648-1780514208.webp",
+    "category": "Other"
+  }
+]

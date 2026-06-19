@@ -21,6 +21,9 @@ public class AdminController {
     @Autowired
     private com.automatica.fakenews.service.NewsAgentService newsAgentService;
 
+    @Autowired
+    private com.automatica.fakenews.service.LocalAgentService localAgentService;
+
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
         List<FakeNewsReport> pendingReports = reportService.getPendingReports();
@@ -44,6 +47,13 @@ public class AdminController {
         } else {
             redirectAttributes.addFlashAttribute("errorMessage", "AI analysis failed. Check logs.");
         }
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/classify-local")
+    public String classifyLocal(RedirectAttributes redirectAttributes) {
+        localAgentService.classifyUncategorizedReports();
+        redirectAttributes.addFlashAttribute("successMessage", "Local AI classification started in the background! Refresh in a moment to see results.");
         return "redirect:/admin/dashboard";
     }
 
