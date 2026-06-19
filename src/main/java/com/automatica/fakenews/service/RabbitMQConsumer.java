@@ -3,6 +3,8 @@ package com.automatica.fakenews.service;
 import com.automatica.fakenews.config.RabbitMQConfig;
 import com.automatica.fakenews.model.GeminiResponse;
 import com.google.genai.errors.ClientException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RabbitMQConsumer {
 
+    private static final Logger log = LoggerFactory.getLogger(RabbitMQConsumer.class);
     private final GeminiService geminiService;
 
     @Autowired
@@ -19,21 +22,21 @@ public class RabbitMQConsumer {
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE_NAME)
     public String receiveMessage(String prompt) {
-        System.out.println("Received message for fact-checking: " + prompt);
+        log.info("Received message for fact-checking: {}", prompt);
         try {
             GeminiResponse response = geminiService.askGeminiWithResponse(prompt);
-            System.out.println("Response from Gemini: " + response);
+            log.info("Response from Gemini: {}", response);
             return response.name();
         } catch (ClientException e) {
             if (e.getMessage() != null && e.getMessage().contains("429")) {
-                System.err.println("Error: Daily limit reached. Cannot send more messages today.");
+                log.error("Error: Daily limit reached. Cannot send more messages today.");
                 return "RATE_LIMIT_EXCEEDED";
             } else {
-                e.printStackTrace();
+                log.error("ClientException in RabbitMQConsumer", e);
                 return "ERROR";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Exception in RabbitMQConsumer", e);
             return "ERROR";
         }
     }

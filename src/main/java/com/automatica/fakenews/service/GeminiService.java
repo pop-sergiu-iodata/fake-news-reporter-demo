@@ -3,12 +3,15 @@ package com.automatica.fakenews.service;
 import com.automatica.fakenews.model.GeminiResponse;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GeminiService {
 
+    private static final Logger log = LoggerFactory.getLogger(GeminiService.class);
     private final Client client;
 
     @Autowired
@@ -26,7 +29,7 @@ public class GeminiService {
 
             return response.text();
         } catch (Exception e) {
-            System.err.println("Error communicating with Gemini: " + e.getMessage());
+            log.error("Error communicating with Gemini: {}", e.getMessage(), e);
             return "ERROR";
         }
     }

@@ -18,17 +18,43 @@ public class AdminController {
     @Autowired
     private FakeNewsReportService reportService;
 
+    @Autowired
+    private com.automatica.fakenews.service.NewsAgentService newsAgentService;
+
+    @Autowired
+    private com.automatica.fakenews.service.LocalAgentService localAgentService;
+
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
         List<FakeNewsReport> pendingReports = reportService.getPendingReports();
         List<FakeNewsReport> approvedReports = reportService.getApprovedReports();
         List<FakeNewsReport> rejectedReports = reportService.getRejectedReports();
         
+        // Add all reports sorted by date, but specifically highlight AI ones
         model.addAttribute("pendingReports", pendingReports);
         model.addAttribute("approvedReports", approvedReports);
         model.addAttribute("rejectedReports", rejectedReports);
         
         return "admin/dashboard";
+    }
+
+    @PostMapping("/analyze-news")
+    public String analyzeNews(RedirectAttributes redirectAttributes) {
+        List<FakeNewsReport> results = newsAgentService.fetchAndAnalyzeTopNews();
+        if (!results.isEmpty()) {
+            redirectAttributes.addFlashAttribute("successMessage", "Successfully analyzed " + results.size() + " new articles!");
+            redirectAttributes.addFlashAttribute("newlyAnalyzed", results);
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "AI analysis failed. Check logs.");
+        }
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/classify-local")
+    public String classifyLocal(RedirectAttributes redirectAttributes) {
+        localAgentService.classifyUncategorizedReports();
+        redirectAttributes.addFlashAttribute("successMessage", "Local AI classification started in the background! Refresh in a moment to see results.");
+        return "redirect:/admin/dashboard";
     }
 
     @PostMapping("/approve/{id}")

@@ -18,4 +18,6 @@ public interface FakeNewsReportRepository extends JpaRepository<FakeNewsReport, 
     List<FakeNewsReport> findByApprovedTrueOrRejectedTrueOrderByReportedAtDesc();
     
     List<FakeNewsReport> findAllByOrderByReportedAtDesc();
+
+    List<FakeNewsReport> findByCategory(String category);
 }
