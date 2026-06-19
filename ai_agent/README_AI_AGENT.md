@@ -90,5 +90,21 @@ It should output a JSON array of 3 analyzed articles.
 ]
 ```
 
-## 4. Web application (to be fixed)
-There are some errors still, I need to fix them
+## 4. Web application
+
+
+Run docker
+
+```powershell
+docker-compose up --build
+```
+
+then decompose localhost:8080 from docker desktop
+
+then run these commands
+
+```powershell
+mvn clean package
+
+mvn spring-boot:run
+```
